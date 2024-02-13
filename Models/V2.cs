@@ -9,6 +9,8 @@ namespace Arch.Geometry.Models
 {
     public struct V2<N> where N : INumber<N>
     {
+        public static V2<N> Empty => new(N.Zero, N.Zero);
+
         public N this[int index]
         {
             get

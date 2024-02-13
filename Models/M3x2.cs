@@ -133,7 +133,7 @@ namespace Arch.Geometry.Models
 
     public static class M3x2
     {
-        public static M3x2<N> CreateTranslation<N>(N x, N y) where N : unmanaged, IBinaryFloatingPointIeee754<N>
+        public static M3x2<N> CreateTranslation<N>(N x, N y) where N : IBinaryFloatingPointIeee754<N>
         {
             M3x2<N> result = M3x2<N>._Identity;
 
