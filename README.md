@@ -2,6 +2,12 @@
  
 A simple 2D geometry library.
 
+### Table of Contents
+ * [Rectangle](#rectangle)
+ * [Circle](#circle)
+ * [Line](#line)
+ * [Slope](#slope)
+ 
 ## Rectangle
 
 ```cs
