@@ -1,12 +1,7 @@
-﻿using Arch.Geometry.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ShapeSharp.Models;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Arch.Geometry.Logic
+namespace ShapeSharp.Logic
 {
     public static class Ratio
     {

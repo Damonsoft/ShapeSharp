@@ -1,13 +1,7 @@
-﻿using Arch.Geometry.Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Arch.Geometry.Models
+namespace ShapeSharp.Models
 {
     public struct Circle<N> where N : INumber<N>
     {
@@ -54,7 +48,7 @@ namespace Arch.Geometry.Models
         public static V2<float> Map(double radius, double degrees) => new(Sin(radius, degrees), Cos(radius, degrees));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static V2<float> PointAt(this in Circle<float> circle, float radians) => new(circle.CenterX + circle.Radius * MathF.Cos(radians), circle.CenterY + circle.Radius * MathF.Sin(radians));
+        public static V2<N> PointAt<N>(this in Circle<N> circle, N radians) where N : IBinaryFloatingPointIeee754<N> => new(circle.CenterX + circle.Radius * N.Cos(radians), circle.CenterY + circle.Radius * N.Sin(radians));
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Circle<N> Create<N>(N x, N y, N size) where N : INumber<N>

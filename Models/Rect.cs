@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Arch.Geometry.Models
+namespace ShapeSharp.Models
 {
     public struct Rect<N> where N : INumber<N>
     {
         public static Rect<N> Empty => new Rect<N>(N.Zero, N.Zero, N.Zero, N.Zero);
 
+        public readonly V2<N> TopLeft  { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => new(X, Y); }
+        public readonly V2<N> TopRight { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => new(X + W, Y); }
+        public readonly V2<N> BottomRight { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => new(X + W, Y + H); }
+        public readonly V2<N> BottomLeft { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => new(X, Y + H); }
+
         public readonly N R { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => X + W; }
         public readonly N B { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => Y + H; }
+
         public readonly V2<N> Center { [MethodImpl(MethodImplOptions.AggressiveInlining)] get => new(this.X + this.W / (N.One + N.One), this.Y + H / (N.One + N.One));  }
 
         public N X;
@@ -37,17 +38,6 @@ namespace Arch.Geometry.Models
             this.H = height;
         }
 
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly V2<N> TopLeft() => new(X, Y);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly V2<N> TopRight() => new(X + W, Y);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly V2<N> BottomRight() => new(X + W, Y + H);
-
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly V2<N> BottomLeft() => new(X, Y + H);
 
         public readonly bool Contains(N x, N y)
         {
@@ -64,5 +54,14 @@ namespace Arch.Geometry.Models
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public readonly LTRB<N> ToLTRB() => new(X, Y, X + W, Y + H);
+
+    }
+
+    public static class RectEx
+    {
+        public static System.Drawing.Rectangle ToDrawingRect(this in Rect<float> rect) => new System.Drawing.Rectangle((int)rect.X, (int)rect.Y, (int)rect.W, (int)rect.H);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Rect<N> Create<N>(N x, N y, N w, N h) where N : INumber<N> => new(x, y, w, h);
     }
 }

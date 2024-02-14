@@ -1,5 +1,4 @@
-﻿using Arch.Geometry.Models;
-using System.Numerics;
+﻿using System.Numerics;
 
 namespace ShapeSharp.Models
 {

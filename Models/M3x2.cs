@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Arch.Geometry.Models
+namespace ShapeSharp.Models
 {
     public struct M3x2<N> where N : INumber<N>
     {

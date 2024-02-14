@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ShapeSharp.Models;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Arch.Geometry.Models
+namespace ShapeSharp.Models
 {
     public struct V2<N> where N : INumber<N>
     {
@@ -69,11 +65,16 @@ namespace Arch.Geometry.Models
         {
             return new(left.X / right.X, left.Y / right.Y);
         }
+
+        public static V2<N> operator +(V2<N> left, Slope<N> right)
+        {
+            return new(left.X + right.Run, left.Y + right.Rise);
+        }
     }
 
     public static class V2
     {
-        public static V2<N> Center<N>(V2<N> left, V2<N> right) where N : INumber<N>
+        public static V2<N> MidPoint<N>(V2<N> left, V2<N> right) where N : INumber<N>
         {
             (N max, N min) x = left.X > right.X ? new(left.X, right.X) : new(right.X, left.X);
             (N max, N min) y = left.Y > right.Y ? new(left.Y, right.Y) : new(right.Y, left.Y);

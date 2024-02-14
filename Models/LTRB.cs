@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Arch.Geometry.Models
+namespace ShapeSharp.Models
 {
     public struct LTRB<N> where N : INumber<N>
     {

@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Numerics;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Arch.Geometry.Logic
+namespace ShapeSharp.Logic
 {
     public static class Degrees
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float ToRadians(float degrees) => degrees * (float)(Math.PI / 180);
+        public static float ToRadians(float degrees) => degrees * (float)(Math.PI / 180d);
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static double ToRadians(double degrees) => degrees * (Math.PI / 180d);
     }
 }
