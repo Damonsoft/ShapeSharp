@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Arch.Geometry.Models
 {
-    public struct M3x2<N> where N : IBinaryFloatingPointIeee754<N>
+    public struct M3x2<N> where N : INumber<N>
     {
         internal static M3x2<N> _Identity => new(N.One, N.Zero,
                                                  N.Zero, N.One,
@@ -133,7 +133,7 @@ namespace Arch.Geometry.Models
 
     public static class M3x2
     {
-        public static M3x2<N> CreateTranslation<N>(N x, N y) where N : IBinaryFloatingPointIeee754<N>
+        public static M3x2<N> CreateTranslation<N>(N x, N y) where N : INumber<N>
         {
             M3x2<N> result = M3x2<N>._Identity;
 
@@ -207,7 +207,7 @@ namespace Arch.Geometry.Models
             return result;
         }
 
-        public static M3x2<N> CreateScale<N>(V2<N> scale) where N : IBinaryFloatingPointIeee754<N>
+        public static M3x2<N> CreateScale<N>(V2<N> scale) where N : INumber<N>
         {
             M3x2<N> result = M3x2<N>._Identity;
 
@@ -217,7 +217,7 @@ namespace Arch.Geometry.Models
             return result;
         }
 
-        public static M3x2<N> CreateScale<N>(V2<N> scale, V2<N> center) where N : IBinaryFloatingPointIeee754<N>
+        public static M3x2<N> CreateScale<N>(V2<N> scale, V2<N> center) where N : INumber<N>
         {
             M3x2<N> result = M3x2<N>._Identity;
 
@@ -232,7 +232,7 @@ namespace Arch.Geometry.Models
             return result;
         }
 
-        public static M3x2<N> CreateScale<N>(N scaleX, N scaleY, N centerX, N centerY) where N : IBinaryFloatingPointIeee754<N>
+        public static M3x2<N> CreateScale<N>(N scaleX, N scaleY, N centerX, N centerY) where N : INumber<N>
         {
             M3x2<N> result = M3x2<N>._Identity;
 
@@ -247,7 +247,7 @@ namespace Arch.Geometry.Models
             return result;
         }
 
-        public static void Transform<N>(Span<V2<N>> vectors, in M3x2<N> matrix) where N : IBinaryFloatingPointIeee754<N>
+        public static void Transform<N>(Span<V2<N>> vectors, in M3x2<N> matrix) where N : INumber<N>
         {
             for(int i = 0; i < vectors.Length; i++)
             {

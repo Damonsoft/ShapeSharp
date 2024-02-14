@@ -47,7 +47,7 @@ namespace Arch.Geometry.Models
         public readonly V2<N> BottomRight() => new(X + W, Y + H);
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public readonly V2<N> BototmLeft() => new(X, Y + H);
+        public readonly V2<N> BottomLeft() => new(X, Y + H);
 
         public readonly bool Contains(N x, N y)
         {
